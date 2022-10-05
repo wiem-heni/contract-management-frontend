@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Contrat</title>
+
+<meta http-equiv="X-UA-Compatible"
+	content="test/html; IE=edge; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- Custom fonts for this template-->
+<link href="../ressources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- Custom styles for this template-->
+<link href="../ressources/css/sb-admin-2.min.css" rel="stylesheet" />
+
+<link rel="icon" type="image/png" href="../ressources/img/favicon.png" />
+
+</head>
+
+<body id="page-top">
+
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ui:include src="menu.xhtml" />
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+				<!-- Sidebar Toggle (Topbar) -->
+				<button id="sidebarToggleTop"
+					class="btn btn-link d-md-none rounded-circle mr-3">
+					<i class="fa fa-bars"></i>
+				</button>
+
+
+
+				<ui:include src="top.xhtml" />
+
+				</nav>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Informations</h1>
+						<h:form>
+							<h:commandLink action="#{userController.ActionGoToUpdateUserController}"
+								class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+								<i class="fas fa-edit fa-sm text-white-50" ></i>Modifier utilisateur</h:commandLink>
+						</h:form>
+
+					</div>
+					<!-- Basic Card Example -->
+
+
+
+					<div class="col-lg-6">
+						<div class="card shadow mb-4">
+
+							<div class="card-body">
+								<div class="p-3 bg-gray-200">
+									Nom :
+									<h:outputText value="#{userController.user.nomUser}"
+										class="text-gray-900"></h:outputText>
+								</div>
+
+								<div class="p-3 bg-gray-200">
+									Prénom :
+									<h:outputText value="#{userController.user.prenomUser}"
+										class="text-gray-900"></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Etat :
+									<h:outputText value="#{userController.user.etat}"
+										class="text-gray-900"></h:outputText>
+								</div>
+									<div class="p-3 bg-gray-200">
+									Cin :
+									<h:outputText value="#{userController.user.cin}"
+										class="text-gray-900"></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Email :
+									<h:outputText value="#{userController.user.emailUser}"
+										class="text-gray-900"><f:convertDateTime
+											pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Date création :
+									<h:outputText value="#{userController.user.dateCreation}"
+										class="text-gray-900">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Login :
+									<h:outputText value="#{userController.user.login}"
+										class="text-gray-900">></h:outputText>
+								</div>
+									<div class="p-3 bg-gray-200">
+									Password :
+									<h:outputText value="#{userController.user.password}"
+										class="text-gray-900">></h:outputText>
+								</div>
+	<c:set var="vall"
+									value="#{userController.user.profil.responsableJuridique}" />
+								<c:if test="${vall==true}">
+									<div class="p-3 bg-gray-200">
+										Rôle : 
+										<h:outputText value="Responsable juridique"
+										style="color: #008000;" ></h:outputText>
+									</div>
+								</c:if>
+									<c:set var="colab"
+									value="#{userController.user.profil.collaborateur}" />
+								<c:if test="${colab==true}">
+									<div class="p-3 bg-gray-200">
+										Rôle : 
+										<h:outputText value="Collaborateur"
+										style="color: #008000;"></h:outputText>
+									</div>
+								</c:if>
+								<c:set var="boolContrat"
+									value="#{userController.user.role.roleGestionContrat}" />
+								<c:if test="${boolContrat==true}">
+									<div class="p-3 bg-gray-200">
+										Profil : 
+										<h:outputText value="gestion contrat"
+										class="text-gray-900"></h:outputText>
+									</div>
+								</c:if>
+								<c:set var="boolCat"
+									value="#{userController.user.role.roleGestionCategorie}" />
+								<c:if test="${boolCat==true}">
+									<div class="p-3 bg-gray-200">
+										Profil :
+										<h:outputText value="gestion catégorie"
+										class="text-gray-900"></h:outputText>
+									</div>
+								</c:if>
+								<c:set var="boolCo"
+									value="#{userController.user.role.roleGestionContractant}" />
+								<c:if test="${boolCo==true}">
+									<div class="p-3 bg-gray-200">
+										Profil :
+										<h:outputText value="gestion coContractant"
+										class="text-gray-900"></h:outputText>
+										
+									</div>
+								</c:if>
+								<c:set var="boolCharts"
+									value="#{userController.user.role.roleStatistique}" />
+								<c:if test="${boolCharts==true}">
+									<div class="p-3 bg-gray-200">
+										Profil :<h:outputText value="Consultation statistiques"
+										class="text-gray-900"></h:outputText>
+									</div>
+								</c:if>
+								<c:set var="boolSuivi"
+									value="#{userController.user.role.roleSuiviContrat}" />
+								<c:if test="${boolSuivi==true}">
+									<div class="p-3 bg-gray-200">
+										Profil :<h:outputText value="Suivi des contrats"
+										class="text-gray-900"></h:outputText>
+									</div>
+								</c:if>
+									<c:set var="boolRapport"
+									value="#{userController.user.role.roleRapport}" />
+								<c:if test="${boolRapport==true}">
+									<div class="p-3 bg-gray-200">
+										Profil :<h:outputText value="Rapport d'activité"
+										class="text-gray-900"></h:outputText>
+									</div>
+								</c:if>
+									<c:set var="boolUser"
+									value="#{userController.user.role.roleGestionUser}" />
+								<c:if test="${boolUser==true}">
+									<div class="p-3 bg-gray-200">
+										Profil :<h:outputText value="Gestion des utilisateurs"
+										class="text-gray-900"></h:outputText>
+									</div>
+								</c:if>
+
+
+
+
+							</div>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../ressources/vendor/jquery/jquery.min.js"></script>
+	<script src="../ressources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../ressources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../ressources/js/sb-admin-2.min.js"></script>
+
+</body>
+</html>

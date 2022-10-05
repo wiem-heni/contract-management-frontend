@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ph="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Contrat</title>
+	 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
+<meta http-equiv="X-UA-Compatible"
+	content="test/html; IE=edge; charset=utf-8" />
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+	<meta http-equiv="X-UA-Compatible"
+		content="test/html; IE=edge; charset=utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+
+
+	<!-- Custom fonts for this template-->
+	<link href="../ressources/vendor/fontawesome-free/css/all.min.css"
+		rel="stylesheet" type="text/css" />
+
+
+	<!-- Custom styles for this template-->
+	<link href="../ressources/css/sb-admin-2.min.css" rel="stylesheet" />
+
+	<link rel="icon" type="image/png" href="../ressources/img/favicon.png" />
+
+	<link
+		href="../ressources/vendor/datatables/dataTables.bootstrap4.min.css"
+		rel="stylesheet" />
+
+	<link rel="stylesheet"
+		href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$.datepicker.setDefaults({
+			altField : "#datepicker",
+			closeText : 'Fermer',
+			prevText : 'Précédent',
+			nextText : 'Suivant',
+			currentText : 'Aujourd\'hui',
+			monthNames : [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai',
+					'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre',
+					'Novembre', 'Décembre' ],
+			monthNamesShort : [ 'Janv.', 'Févr.', 'Mars', 'Avril', 'Mai',
+					'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.' ],
+			dayNames : [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi',
+					'Vendredi', 'Samedi' ],
+			dayNamesShort : [ 'Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.',
+					'Sam.' ],
+			dayNamesMin : [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+			weekHeader : 'Sem.',
+			dateFormat : 'dd-mm-yy'
+		});
+ 
+ 
+	</script>
+	<script type="text/javascript">
+		  $(function() {
+			$("#datepicker").datepicker();
+		});
+ 
+	</script>
+	<script type="text/javascript">
+		function afficher(etat) {
+			document.getElementById("formt:champ").style.visibility = etat;
+		}
+	</script>
+</h:head>
+
+<h:body id="page-top">
+
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ui:include src="menu.xhtml" />
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+				<!-- Sidebar Toggle (Topbar) -->
+				<button id="sidebarToggleTop"
+					class="btn btn-link d-md-none rounded-circle mr-3">
+					<i class="fa fa-bars"></i>
+				</button>
+
+
+
+				<!-- Topbar Navbar -->
+				<ui:include src="top.xhtml" />
+				</nav>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+
+				<div class="container-fluid">
+					<h:form id="formt">
+
+
+						<div class="col-lg-11">
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">Modifier
+										contrat</h6>
+
+								</div>
+								<div class="card-body">
+
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label text-gray-900">Cocontractant</label>
+										<div class="col-sm-4">
+											<h:selectOneMenu class="form-control"
+												value="#{contratController.selectItemCocoUp}"
+										
+												requiredMessage="Veuillez saisir le cocontractant!">
+													<f:selectItem
+													itemLabel="#{contratController.contrat.cocontractant.nom}"
+													itemValue="#{contratController.contrat.cocontractant.id}"
+														noSelectionOption="true"  />
+												<f:selectItems value="#{contratController.listAllCocon}"
+													var="a" itemValue="#{a.id}" itemLabel="#{a.nom}" />
+											</h:selectOneMenu>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label text-gray-900">Objet
+											contrat</label>
+										<div class="col-sm-4">
+											<h:inputText class="form-control" id="objetValidate"
+												value="#{contratController.contrat.objetContrat}"
+												ph:placeholder="objet" />
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label text-gray-900">Catégorie</label>
+										<div class="col-sm-4">
+											<h:selectOneMenu class="form-control"
+												value="#{contratController.selectItemCategorieUp}"
+												id="categorieValidate">
+												<f:selectItem
+													itemLabel="#{contratController.contrat.categorie.nom}"
+													itemValue="#{contratController.contrat.categorie.id}"
+													noSelectionOption="true" />
+												<f:selectItems value="#{contratController.listCategorie}"
+													var="a" itemValue="#{a.id}" itemLabel="#{a.nom}" />
+											</h:selectOneMenu>
+										</div>
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label text-gray-900">Date
+											début</label>
+										<div class="col-sm-4" id="datepicker">
+											<h:inputText class="form-control" id="datedValidate"
+												value="#{contratController.contrat.dateDebut}">
+												<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+
+
+											</h:inputText>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label text-gray-900">Date
+											fin</label>
+										<div class="col-sm-4">
+											<h:inputText styleClass="form-control datepicker"
+												id="datefValidate"
+												value="#{contratController.contrat.dateFin}">
+												<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+											</h:inputText>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label text-gray-900">Coût/Prix</label>
+										<div class="col-sm-4">
+											<h:inputText class="form-control"
+												value="#{contratController.contrat.cout}"
+												ph:placeholder="coût/prix" />
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label text-gray-900">Type
+											contrat</label>
+										<div class="col-sm-4">
+											<h:selectOneRadio
+												value="#{contratController.selectItemType}" id="type">
+
+												<f:selectItem itemLabel="Ferme" itemValue="Ferme"
+													onclick="afficher('hidden');"></f:selectItem>
+												<f:selectItem itemLabel="Renouvelable"
+													itemValue="Renouvelable" onclick="afficher('visible');"></f:selectItem>
+
+											</h:selectOneRadio>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label text-gray-900">Observation</label>
+										<div class="col-sm-4">
+											<h:inputText class="form-control"
+												value="#{contratController.contrat.observation}">
+											</h:inputText>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-13" id="champ">
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">Informations
+											renouvellement</h6>
+
+									</div>
+									<div class="card-body">
+
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label text-gray-900">Periode
+												renouvellement</label>
+											<div class="col-sm-2 mb-3 mb-sm-0">
+												<h:inputText class="form-control" id="validateP"
+													value="#{contratController.contrat.nombre}" />
+
+											</div>
+											<div class="col-sm-2">
+												<h:selectOneMenu class="form-control"
+													value="#{contratController.selectItemPeriodeUp}"
+													id="PeriodeValidate">
+													<f:selectItem
+														itemLabel="#{contratController.contrat.periode}"
+														itemValue="#{contratController.contrat.periode}"
+														noSelectionOption="true" />
+													<f:selectItem itemLabel="jour" itemValue="jour"></f:selectItem>
+													<f:selectItem itemLabel="mois" itemValue="mois"></f:selectItem>
+													<f:selectItem itemLabel="annee" itemValue="annee"></f:selectItem>
+												</h:selectOneMenu>
+
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label text-gray-900">Délai
+												de préavis</label>
+											<div class="col-sm-2 mb-3 mb-sm-0">
+												<h:inputText class="form-control" id="nbValidate"
+													value="#{contratController.contrat.nb}" />
+
+											</div>
+											<div class="col-sm-2">
+												<h:selectOneMenu class="form-control"
+													value="#{contratController.selectItemUniteUp}"
+													id="UniteValidate">
+													<f:selectItem
+														itemLabel="#{contratController.contrat.unite}"
+														itemValue="#{contratController.contrat.unite}"
+														noSelectionOption="true" />
+													<f:selectItem itemLabel="jour" itemValue="jour"></f:selectItem>
+													<f:selectItem itemLabel="mois" itemValue="mois"></f:selectItem>
+													<f:selectItem itemLabel="annee" itemValue="annee"></f:selectItem>
+												</h:selectOneMenu>
+
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label text-gray-900">Taux
+												d'augmentation</label>
+											<div class="col-sm-4">
+												<h:inputText class="form-control" id="tauxValidate"
+													value="#{contratController.contrat.taux}"
+													ph:placeholder="taux d'augmentation">
+
+												</h:inputText>
+											</div>
+										</div>
+
+
+
+										<br></br>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<h:commandLink class="btn btn-success col-sm-2"
+									action="#{contratController.ActionUpdateContratController}"
+									value="Sauvegarder">
+								</h:commandLink>
+
+								<h:commandLink styleClass="btn btn-default btn-light col-sm-2"
+									value="Annuler" immediate="true"
+									action="#{contratController.ActionGoToListAllContratsController}">
+								</h:commandLink>
+
+							</div>
+
+						</div>
+
+					</h:form>
+
+				</div>
+
+
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../ressources/vendor/jquery/jquery.min.js"></script>
+	<script src="../ressources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../ressources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+	<!-- Page level custom scripts -->
+	
+		  <script src="../ressources/js/sb-admin-2.min.js"></script>
+	
+
+</h:body>
+</html>

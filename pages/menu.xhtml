@@ -1,0 +1,145 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<!-- Sidebar -->
+
+
+	<ul
+		class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion"
+		id="accordionSidebar">
+
+		<!-- Sidebar - Brand -->
+		<a
+			class="sidebar-brand d-flex align-items-center justify-content-center"
+			href="index.html" style="background-color: #FFFFFF;"> <span>
+				<img class="img-fluid" src="../ressources/img/logoztm.png"
+				width="auto" height="auto"></img>
+		</span>
+
+		</a>
+<h:form>
+<h:panelGroup rendered="#{loginController.user.role.roleStatistique}">
+		<!-- Divider -->
+		<hr class="sidebar-divider my-0" />
+
+		<!-- Nav Item - Dashboard -->
+
+		<li class="nav-item">
+				<a class="nav-link" jsfc="h:commandLink" action="#{statistique.ActionGoToDashboard}"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>Tableau de
+						Bord</span>
+				</a>
+			</li>
+	</h:panelGroup></h:form>
+		<!-- Divider -->
+
+		<hr class="sidebar-divider" />
+<h:form>
+		<!-- Nav Item - Pages Collapse Menu -->
+<h:panelGroup rendered="#{loginController.user.role.roleGestionUser}">
+		<li class="nav-item"><a class="nav-link collapsed" href="#"
+			data-toggle="collapse" data-target="#collapseTwo"
+			aria-expanded="true" aria-controls="collapseTwo"> <i
+				class="fas fa-fw fa-cog"></i> <span>Administrateur</span>
+		</a>
+			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+				data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header"></h6>
+				
+						<h:commandLink class="collapse-item"
+							value="Gestion des utilisateurs"
+							action="#{userController.ActionGoToListAllUsersController}"></h:commandLink>
+				
+						<h:commandLink class="collapse-item" value="Paramètres du compte"></h:commandLink>
+				
+				</div>
+			</div></li>
+	</h:panelGroup>
+		<!-- Nav Item - Utilities Collapse Menu -->
+</h:form>
+<h:form>
+				<h:panelGroup rendered="#{loginController.user.role.roleGestionContrat}">
+		<!-- Divider -->
+		<hr class="sidebar-divider" />
+
+		<!-- Heading -->
+		<div class="sidebar-heading"></div>
+
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item"><a class="nav-link collapsed" href="#"
+			data-toggle="collapse" data-target="#collapsePages"
+			aria-expanded="true" aria-controls="collapsePages"> <i
+				class="far fa-file-alt"></i> <span>Gestion Contrat</span>
+		</a>
+			<div id="collapsePages" class="collapse"
+				aria-labelledby="headingPages" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					
+						<h:commandLink class="collapse-item" value="Ajout contrat"
+							action="#{contratController.ActionGoToCreateContratController}"></h:commandLink>
+				
+					
+						<h:commandLink class="collapse-item" value="Liste des contrats"
+							action="#{contratController.ActionGoToListAllContratsController}"></h:commandLink>
+
+				
+
+					<div class="collapse-divider"></div>
+
+
+				</div>
+			</div></li>
+</h:panelGroup></h:form>
+
+<h:form>
+<h:panelGroup rendered="#{loginController.user.role.roleGestionCategorie}"
+					>
+		<!-- Nav Item - Charts -->
+		<li class="nav-item">
+				<a class="nav-link" jsfc="h:commandLink"
+					action="#{categorieController.ActionGoToListAllCategorieController}">
+					<i class="fa fa-file"></i> <span>Gestion Catégorie</span>
+				</a>
+			</li>
+</h:panelGroup></h:form>
+		<!-- Nav Item - Charts -->
+		
+	<h:form>	
+		<h:panelGroup rendered="#{loginController.user.role.roleGestionContractant}">
+		<li class="nav-item">
+				<a class="nav-link" jsfc="h:commandLink"
+					action="#{cocontractantController.ActionGoToListAllCocontractantsController}">
+					<i class="fa fa-user"></i> <span>Gestion Co-Contractant</span>
+				</a>
+			</li>
+</h:panelGroup>
+</h:form>
+<h:form>
+<h:panelGroup  rendered="#{loginController.user.role.roleSuiviContrat}">
+		<!-- Divider -->
+		<hr class="sidebar-divider" />
+
+		<li class="nav-item">
+				<a class="nav-link" jsfc="h:commandLink"
+					action="#{contratController.ActionGoToSuiviContratController}">
+					<i class="far fa-chart-bar"></i> <span>Suivi Contrats</span>
+				</a>
+			</li>
+	</h:panelGroup></h:form>
+		<!-- Divider -->
+		<hr class="sidebar-divider  d-none d-md-block" />
+
+<div class="text-center d-none d-md-inline">
+		<button class="rounded-circle border-0" id="sidebarToggle"></button>
+	</div>
+	</ul>
+	<!-- End of Sidebar -->
+
+</ui:composition>

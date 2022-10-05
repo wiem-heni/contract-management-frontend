@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Contrat</title>
+
+<meta http-equiv="X-UA-Compatible"
+	content="test/html; IE=edge; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+
+<!-- Custom fonts for this template-->
+<link href="../ressources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+<!-- Custom styles for this template-->
+<link href="../ressources/css/sb-admin-2.min.css" rel="stylesheet" />
+
+<link rel="icon" type="image/png" href="../ressources/img/favicon.png" />
+
+<link
+	href="../ressources/vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet" />
+
+</head>
+
+
+<body id="page-top">
+
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+	<ui:include src="menu.xhtml" />
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+				<!-- Sidebar Toggle (Topbar) -->
+				<button id="sidebarToggleTop"
+					class="btn btn-link d-md-none rounded-circle mr-3">
+					<i class="fa fa-bars"></i>
+				</button>
+
+
+
+				<!-- Topbar Navbar -->
+			<ui:include src="top.xhtml" />
+
+				</nav>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Etat de suivi des contrats
+							ZTM</h1>
+						<h:form>
+							<h:commandLink
+								class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
+								action="#{contratController.ActionGoToCreateContratController}">
+								<i class="fas fa-plus fa-sm text-white-50"></i> Ajouter Contrat</h:commandLink>
+						</h:form>
+					</div>
+
+					<div class="row">
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-primary shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												<h:form>
+													<h:commandLink
+														value="Contrats renouvelables atteints préavis"
+														class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+														action="#{contratController.ActionGoToListRenouvelableAtteintPreavisController}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">
+
+												<h:outputText
+													value="#{contratController.nbContratRenouvelableAtteintPreavis}"></h:outputText>
+
+
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-success shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-success text-uppercase mb-1">
+												<h:form>
+													<h:commandLink
+														value="Renouvelables dont le preavis est dans -30 jours"
+														class="text-xs font-weight-bold text-success text-uppercase mb-1"
+														action="#{contratController.ActionGoToListRenouvelableAvantPreavisController}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">
+												<h:outputText
+													value="#{contratController.nbContratRenouvelableAvantPreavis}"></h:outputText>
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-calendar fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-info shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-info text-uppercase mb-1">
+												<h:form>
+													<h:commandLink value="Renouvelables expirés dans -30 jours"
+														class="text-xs font-weight-bold text-info text-uppercase mb-1"
+														action="#{contratController.ActionGoToListRenouvelableAvantExpirationController}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="row no-gutters align-items-center">
+												<div class="col-auto">
+													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+														<h:outputText
+															value="#{contratController.nbContratRenouvelableAvantExpiration}"></h:outputText>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-calendar fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Pending Requests Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-warning shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+												<h:form>
+													<h:commandLink value="Renouvelables expirés"
+														class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+														action="#{contratController.ActionGoToListRenouvelableExpirerController}"></h:commandLink>
+												</h:form>
+<br></br>
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">
+												<h:outputText
+													value="#{contratController.nbContratRenouvelableExpirer}"></h:outputText>
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-times-circle fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-primary shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												<h:form>
+													<h:commandLink value="Contrats renouvelables en cours"
+														class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+														action="#{contratController.ActionGoToListRenouvelableEnCoursController}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">
+
+												<h:outputText
+													value="#{contratController.nbContratRenouvelableEnCours}"></h:outputText>
+
+
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-success shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-success text-uppercase mb-1">
+												<h:form>
+													<h:commandLink value="Fermes en cours"
+														class="text-xs font-weight-bold text-success text-uppercase mb-1"
+														action="#{contratController.ActionGoToListFermeEnCoursController}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">
+												<h:outputText
+													value="#{contratController.nbContratFermeEnCours}"></h:outputText>
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-calendar fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-info shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-info text-uppercase mb-1">
+												<h:form>
+													<h:commandLink value="Fermes expirés dans -30 jours"
+														class="text-xs font-weight-bold text-info text-uppercase mb-1"
+														action="#{contratController.ActionGoToListFermeAvantExpirationController}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="row no-gutters align-items-center">
+												<div class="col-auto">
+													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+														<h:outputText
+															value="#{contratController.nbContratFermeAvantExpiration}"></h:outputText>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-calendar fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Pending Requests Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-warning shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+												<h:form>
+													<h:commandLink value="Fermes expirés"
+														class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+														action="#{contratController.ActionGoToListFermeExpirerController}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">
+												<h:outputText
+													value="#{contratController.nbContratFermeExpirer}"></h:outputText>
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-times-circle fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+					<div class="row">
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-primary shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												<h:form>
+													<h:commandLink
+														value="Contrats annulés"
+														class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+														action="#{contratController.ActionGoToListContratAnnuler}"></h:commandLink>
+												</h:form>
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">
+
+												<h:outputText
+													value="#{contratController.nbContratAnnuler}"></h:outputText>
+
+
+											</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+				</div>
+
+
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../ressources/vendor/jquery/jquery.min.js"></script>
+	<script src="../ressources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../ressources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<script src="../ressources/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="../ressources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="../ressources/js/demo/datatables-demo.js"></script>
+
+</body>
+</html>

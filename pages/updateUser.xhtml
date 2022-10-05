@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jstl/core">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Utilisateurs</title>
+
+<meta http-equiv="X-UA-Compatible"
+	content="test/html; IE=edge; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- Custom fonts for this template-->
+<link href="../ressources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- Custom styles for this template-->
+<link href="../ressources/css/sb-admin-2.min.css" rel="stylesheet" />
+
+<link rel="icon" type="image/png" href="../ressources/img/favicon.png" />
+
+</head>
+
+<body id="page-top">
+
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ui:include src="menu.xhtml" />
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+				<!-- Sidebar Toggle (Topbar) -->
+				<button id="sidebarToggleTop"
+					class="btn btn-link d-md-none rounded-circle mr-3">
+					<i class="fa fa-bars"></i>
+				</button>
+
+
+
+				<!-- Topbar Navbar --> <ui:include src="top.xhtml" /> </nav>
+				<!-- End of Topbar -->
+				<div class="container-fluid">
+					<h:form id="formt">
+
+
+
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">Modifier
+									utilisateur</h6>
+							</div>
+							<div class="card-body">
+
+
+								<div class="form-group row">
+									<label class="col-sm-2 col-form-label">Nom:</label>
+									<div class="col-sm-5">
+										<h:inputText class="form-control"
+											value="#{userController.user.nomUser}" ph:placeholder="nom" />
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-2 col-form-label">Prénom:</label>
+									<div class="col-sm-5">
+										<h:inputText class="form-control"
+											value="#{userController.user.prenomUser}"
+											ph:placeholder="prénom" />
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-2 col-form-label">N°CIN:</label>
+									<div class="col-sm-5">
+										<h:inputText class="form-control" label="cin"
+											value="#{userController.user.cin}" id="numCinUser"
+											validatorMessage="cin doit etre 8 chiffre" ph:placeholder="CIN">
+											<f:validateRegex pattern="[0-9]{8}" />
+										</h:inputText>
+										<h:message for="numCinUser" />
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-2 col-form-label">E-mail:</label>
+									<div class="col-sm-5">
+										<h:inputText class="form-control" id="emailValidate"
+											validatorMessage="Format d'adresse email invalide!"
+											value="#{userController.user.emailUser}"
+											ph:placeholder="email">
+											<f:validateRegex
+												pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+										</h:inputText>
+										<h:message for="emailValidate" style="color:red" />
+									</div>
+								</div>
+
+
+								<div class="form-group row">
+									<label class="col-sm-2 col-form-label">Login:</label>
+									<div class="col-sm-5">
+										<h:inputText class="form-control" id="loginValidate"
+											value="#{userController.user.login}" ph:placeholder="login"
+											validatorMessage="Le login doit contenir entre 4 à 12 caractères">
+											<f:validateLength minimum="4" maximum="12" />
+										</h:inputText>
+										<h:message for="loginValidate" style="color:red" />
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-2 col-form-label">Rôle:</label>
+									<div class="col-sm-5">
+										<h:selectOneMenu class="form-control"
+											value="#{userController.selectItemRole}" required="true"
+											id="roleValidate" requiredMessage="Veuillez saisir un rôle!">
+											<f:selectItem itemLabel="Saisir un rôle.."
+												itemValue="#{null}" noSelectionOption="true" />
+											<f:selectItem itemLabel="Responsable juridique"
+												itemValue="responsable"></f:selectItem>
+											<f:selectItem itemLabel="Collaborateur" itemValue="collab"></f:selectItem>
+											<h:message for="roleValidate" style="color:red" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label">GestionContrat:</label>
+									<div class="col-sm-5">
+										<h:selectOneRadio value="#{userController.selectItemContrat}">
+
+											<f:selectItem itemLabel="oui" itemValue="true"></f:selectItem>
+											<f:selectItem itemLabel="non" itemValue="false"></f:selectItem>
+
+										</h:selectOneRadio>
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label">GestionCategorie</label>
+									<div class="col-sm-5">
+										<h:selectOneRadio value="#{userController.selectItemCat}">
+
+											<f:selectItem itemLabel="oui" itemValue="true"></f:selectItem>
+											<f:selectItem itemLabel="non" itemValue="false"></f:selectItem>
+
+										</h:selectOneRadio>
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label">GestionCoContractant</label>
+									<div class="col-sm-5">
+										<h:selectOneRadio value="#{userController.selectItemCo}">
+
+											<f:selectItem itemLabel="oui" itemValue="true"></f:selectItem>
+											<f:selectItem itemLabel="non" itemValue="false"></f:selectItem>
+
+										</h:selectOneRadio>
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label">ConsulterStatistiques</label>
+									<div class="col-sm-5">
+										<h:selectOneRadio value="#{userController.selectItemCharts}">
+
+											<f:selectItem itemLabel="oui" itemValue="true"></f:selectItem>
+											<f:selectItem itemLabel="non" itemValue="false"></f:selectItem>
+
+										</h:selectOneRadio>
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label">Suivi Contrats</label>
+									<div class="col-sm-5">
+										<h:selectOneRadio value="#{userController.selectItemSuivi}">
+
+											<f:selectItem itemLabel="oui" itemValue="true"></f:selectItem>
+											<f:selectItem itemLabel="non" itemValue="false"></f:selectItem>
+
+										</h:selectOneRadio>
+
+									</div>
+								</div>
+
+
+								<div class="col-sm-9">
+									<h:commandLink class="btn btn-success col-sm-2"
+										action="#{userController.ActionUpdateUserController}"
+										value="Sauvegarder">
+									</h:commandLink>
+
+									<h:commandButton
+										styleClass="btn btn-default btn-light col-sm-2"
+										value="Annuler"
+										action="#{userController.ActionGoToListAllUsersController}">
+									</h:commandButton>
+									<c:set var="etat" value="#{userController.user.enable}" />
+									<c:if test="${etat==true}">
+										<h:commandLink class="btn btn-primary col-sm-2"
+											value="Activer"
+											action="#{userController.ActionActiverUserController}"
+											style="display: none">
+										</h:commandLink>
+
+										<h:commandLink class="btn btn-google col-sm-2"
+											value="Désactiver"
+											action="#{userController.ActionDesactiverUserController}">
+										</h:commandLink>
+									</c:if>
+									<c:if test="${etat==false}">
+										<h:commandLink class="btn btn-primary col-sm-2"
+											value="Activer"
+											action="#{userController.ActionActiverUserController}">
+										</h:commandLink>
+
+										<h:commandLink class="btn btn-google col-sm-2"
+											value="Désactiver"
+											action="#{userController.ActionDesactiverUserController}"
+											style="display: none">
+										</h:commandLink>
+									</c:if>
+								</div>
+
+
+
+							</div>
+						</div>
+
+					</h:form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../ressources/vendor/jquery/jquery.min.js"></script>
+	<script src="../ressources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../ressources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../ressources/js/sb-admin-2.min.js"></script>
+
+</body>
+</html>

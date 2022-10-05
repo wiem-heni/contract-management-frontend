@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Contrat</title>
+
+<meta http-equiv="X-UA-Compatible"
+	content="test/html; IE=edge; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- Custom fonts for this template-->
+<link href="../ressources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- Custom styles for this template-->
+<link href="../ressources/css/sb-admin-2.min.css" rel="stylesheet" />
+
+<link rel="icon" type="image/png" href="../ressources/img/favicon.png" />
+
+</head>
+
+<body id="page-top">
+
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ui:include src="menu.xhtml" />
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+				<!-- Sidebar Toggle (Topbar) -->
+				<button id="sidebarToggleTop"
+					class="btn btn-link d-md-none rounded-circle mr-3">
+					<i class="fa fa-bars"></i>
+				</button>
+
+
+
+				<ui:include src="top.xhtml" /> <!-- End of Topbar --> </nav>
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Informations</h1>
+						<h:form>
+							<h:commandLink
+								class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+								<i class="fas fa-download fa-sm text-white-50"></i>Générer modèle</h:commandLink>
+						</h:form>
+
+					</div>
+					<!-- Basic Card Example -->
+
+
+
+					<div class="col-lg-6">
+						<div class="card shadow mb-4">
+
+							<div class="card-body">
+								<div class="p-3 bg-gray-200">
+									Code du contrat :
+									<h:outputText value="#{contratController.contrat.codeContrat}"
+										class="text-gray-900"></h:outputText>
+								</div>
+
+								<div class="p-3 bg-gray-200">
+									Co-Contractant :
+									<h:outputText
+										value="#{contratController.contrat.cocontractant.nom}"
+										class="text-gray-900">></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Catégorie :
+									<h:outputText
+										value="#{contratController.contrat.categorie.nom}"
+										class="text-gray-900">></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Date Début :
+									<h:outputText value="#{contratController.contrat.dateDebut}"
+										class="text-gray-900">><f:convertDateTime
+											pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Date Fin :
+									<h:outputText value="#{contratController.contrat.dateFin}"
+										class="text-gray-900">><f:convertDateTime
+											pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Année Siganture :
+									<h:outputText
+										value="#{contratController.contrat.anneeSignature}"
+										class="text-gray-900">></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Coût :
+									<h:outputText value="#{contratController.contrat.cout}"
+										class="text-gray-900">></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Type du contrat :
+									<h:outputText value="#{contratController.contrat.typeContrat}"
+										class="text-gray-900">></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Statut du contrat :
+									<h:outputText value="#{contratController.contrat.etatContrat}"
+										class="text-gray-900">></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Observation :
+									<h:outputText value="#{contratController.contrat.observation}"></h:outputText>
+								</div>
+								<div class="p-3 bg-gray-200">
+									Pièces jointes :
+
+
+								</div>
+
+							</div>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../ressources/vendor/jquery/jquery.min.js"></script>
+	<script src="../ressources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../ressources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../ressources/js/sb-admin-2.min.js"></script>
+
+</body>
+</html>

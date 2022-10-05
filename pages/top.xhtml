@@ -1,0 +1,97 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<!-- Sidebar -->
+
+
+	<!-- Topbar Navbar -->
+	<ul class="navbar-nav ml-auto">
+
+		<!-- Dropdown - Alerts -->
+		<!-- Nav Item - Alerts -->
+		<li class="nav-item dropdown no-arrow mx-1"><a
+			class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
+			role="button" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
+				<span class="badge badge-danger badge-counter"><h:outputText
+						value="#{contratController.nbNotif}"></h:outputText></span>
+		</a> <!-- Dropdown - Alerts -->
+			<div
+				class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+				aria-labelledby="alertsDropdown">
+				<h6 class="dropdown-header">Alerts Center</h6>
+				<h:form>
+					<ui:repeat var="a" value="#{contratController.notification}">
+						<a class="dropdown-item d-flex align-items-center" href="#">
+
+							<div class="mr-3">
+
+								<div class="icon-circle bg-info">
+									<i class="fas fa-file-alt text-white"></i>
+								</div>
+							</div>
+							<div>
+								<div class="small text-gray-500">
+									<h:outputText value="#{contratController.datee}"></h:outputText>
+								</div>
+								<span class="font-weight-bold">#{a}</span>
+
+
+							</div>
+						</a>
+					</ui:repeat>
+				</h:form>
+				<h:form>
+						<h:commandLink value="Go to list" class="dropdown-item text-center small text-gray-500"
+							action="#{contratController.ActionGoToListActionController}"></h:commandLink>
+					</h:form>
+			</div></li>
+
+
+		<div class="topbar-divider d-none d-sm-block"></div>
+		<!-- Nav Item - User Information -->
+		<h:form>
+			<li class="nav-item dropdown no-arrow"><a
+				class="nav-link dropdown-toggle" href="#" id="userDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"><span
+					class="mr-2 d-none d-lg-inline text-gray-600 small"> <h:outputLabel
+							value="#{loginController.name}"></h:outputLabel></span> <img
+					class="img-profile rounded-circle"
+					src="../ressources/img/user1.png" /></a> <!-- Dropdown - User Information -->
+				<div
+					class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+					aria-labelledby="userDropdown">
+
+					<h:commandLink value="Profil" class="dropdown-item"
+						style="text-align: center;" data-toggle="modal" action="#{userController.ActionGoToProfil}">
+						<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+					</h:commandLink>
+					<h:panelGroup rendered="#{loginController.user.role.roleGestionUser}">
+					<h:commandLink value="Paramètres" class="dropdown-item"
+						style="text-align: center;" data-toggle="modal">
+						<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+					</h:commandLink></h:panelGroup>
+					<div class="dropdown-divider"></div>
+					
+					<h:commandLink value="Déconnexion" class="dropdown-item"
+						data-toggle="modal"
+						actionListener="#{loginController.actionLogoutController}">
+						<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+					</h:commandLink>
+
+				</div></li>
+		</h:form>
+	</ul>
+
+
+	<!-- End of Topbar -->
+
+
+</ui:composition>
